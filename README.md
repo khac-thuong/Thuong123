@@ -110,6 +110,6 @@ Testing: Cargo Test
 Team
 Tran Khac Thuong
 
-Information Technology Student | University Student
-
-Vietnam
+Information Technology Student 
+tt4060779@gmail.com
+SaiGonTech
