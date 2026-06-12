@@ -161,5 +161,5 @@ get_score(team_name)
 
 * Tran Khac Thuong
 * Information Technology Student
-* University Student
-* Vietnam
+* tt4060779@gmail.com
+* SaiGonTech
