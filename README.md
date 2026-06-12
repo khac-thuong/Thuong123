@@ -1,72 +1,67 @@
-Community DAO & Leaderboard
-Problem
+# Community DAO & Leaderboard
+
+## Problem
 Student communities and study groups often struggle to manage voting decisions, collect contributions, and track team performance in a transparent way.
 
-Solution
+## Solution
 We built a Soroban smart contract on Stellar that enables proposal voting, DAO fund contributions, and hackathon leaderboard management on-chain.
 
-Why Stellar
+## Why Stellar
 Stellar Soroban provides fast, low-cost, and transparent smart contract execution, making community governance accessible to everyone.
 
-Target User
-Student clubs
+## Target User
+* Student clubs
+* Study groups
+* University hackathons
+* Small community organizations
 
-Study groups
+## Features
+### 1. Community Voting
+* Create a proposal
+* Vote Yes / Vote No
+* View voting results
 
-University hackathons
+### 2. DAO Fund
+* Contribute funds to the community treasury
+* View total DAO balance
 
-Small community organizations
+### 3. Hackathon Leaderboard
+* Submit team scores
+* View team scores & track hackathon performance
 
-Features
-1. Community Voting
-Create a proposal
+---
 
-Vote Yes / Vote No
+## Live Demo
+* **Network**: Stellar Testnet
+* **Contract ID**: `CDUGRR7PRCMEJ4UI3EE5NDQ6TOLJYVZCFVFERTD3A7DLDSF7ASC6NCTX`
+* **Transaction (Submit Score)**: [https://stellar.expert/explorer/testnet/tx/30c0a12360feaf8a557064c0b1047130ad743ea7546cc9011a08bd9508707353](https://stellar.expert/explorer/testnet/tx/30c0a12360feaf8a557064c0b1047130ad743ea7546cc9011a08bd9508707353)
 
-View voting results
+---
 
-2. DAO Fund
-Contribute funds to the community treasury
+## Smart Contract Functions
 
-View total DAO balance
+### 🟢 Voting
+* `create_proposal(title: String)`
+* `vote_yes()`
+* `vote_no()`
+* `get_proposal()`
 
-3. Hackathon Leaderboard
-Submit team scores
+### 🟢 DAO
+* `contribute(amount: i128)`
+* `get_dao_balance()`
 
-View team scores & track hackathon performance
+### 🟢 Leaderboard
+* `submit_score(team_name: String, score: u32)`
+* `get_score(team_name: String)`
 
-Live Demo
-Network: Stellar Testnet
+---
 
-Contract ID: CDUGRR7PRCMEJ4UI3EE5NDQ6TOLJYVZCFVFERTD3A7DLDSF7ASC6NCTX
+## How to Run
 
-Transaction (Submit Score): https://stellar.expert/explorer/testnet/tx/30c0a12360feaf8a557064c0b1047130ad743ea7546cc9011a08bd9508707353
-
-Smart Contract Functions
-🟢 Voting
-create_proposal(title: String)
-
-vote_yes()
-
-vote_no()
-
-get_proposal()
-
-🟢 DAO
-contribute(amount: i128)
-
-get_dao_balance()
-
-🟢 Leaderboard
-submit_score(team_name: String, score: u32)
-
-get_score(team_name: String)
-
-How to Run
-1. Setup & Build
-Bash
+### 1. Setup & Build
+```bash
 # Clone Repository
-git clone https://github.com/yourname/community-dao.git
+git clone [https://github.com/yourname/community-dao.git](https://github.com/yourname/community-dao.git)
 
 # Enter Project
 cd community-dao
@@ -80,21 +75,21 @@ cargo test
 Bash
 stellar contract deploy --wasm target/wasm32-unknown-unknown/release/community_dao.wasm --source-account student --network testnet
 3. Interact via CLI (Single-line Commands)
-Do một số Terminal của môi trường Cloud IDE không hỗ trợ ký tự xuống dòng \, hãy sử dụng các lệnh viết liền một dòng dưới đây:
+💡 Note: Some Cloud IDE environments do not support the line-continuation backslash (\). Please use the single-line commands below to interact with the contract.
 
-Kích hoạt & Nạp tiền tài khoản admin trên Testnet:
+Fund and Activate the admin account on Testnet:
 
 Bash
 stellar keys fund admin --network testnet
-Tạo Đề xuất mới:
+Create a New Proposal:
 
 Bash
 stellar contract invoke --id CDUGRR7PRCMEJ4UI3EE5NDQ6TOLJYVZCFVFERTD3A7DLDSF7ASC6NCTX --source admin --network testnet --send=yes -- create_proposal --title "Mua Tai Khoan ChatGPT Plus"
-Gửi điểm số của Đội thi:
+Submit a Team Score:
 
 Bash
 stellar contract invoke --id CDUGRR7PRCMEJ4UI3EE5NDQ6TOLJYVZCFVFERTD3A7DLDSF7ASC6NCTX --source admin --network testnet --send=yes -- submit_score --team_name "Team_Alpha" --score 95
-Truy vấn xem điểm số:
+Query/Get a Team Score:
 
 Bash
 stellar contract invoke --id CDUGRR7PRCMEJ4UI3EE5NDQ6TOLJYVZCFVFERTD3A7DLDSF7ASC6NCTX --source admin --network testnet -- get_score --team_name "Team_Alpha"
@@ -111,5 +106,7 @@ Team
 Tran Khac Thuong
 
 Information Technology Student 
+
 tt4060779@gmail.com
+
 SaiGonTech
