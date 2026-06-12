@@ -1,165 +1,115 @@
-# Community DAO & Leaderboard
-
-## Problem
-
+Community DAO & Leaderboard
+Problem
 Student communities and study groups often struggle to manage voting decisions, collect contributions, and track team performance in a transparent way.
 
-## Solution
-
+Solution
 We built a Soroban smart contract on Stellar that enables proposal voting, DAO fund contributions, and hackathon leaderboard management on-chain.
 
-## Why Stellar
-
+Why Stellar
 Stellar Soroban provides fast, low-cost, and transparent smart contract execution, making community governance accessible to everyone.
 
-## Target User
+Target User
+Student clubs
 
-* Student clubs
-* Study groups
-* University hackathons
-* Small community organizations
+Study groups
 
-## Features
+University hackathons
 
-### Community Voting
+Small community organizations
 
-* Create a proposal
-* Vote Yes
-* Vote No
-* View voting results
+Features
+1. Community Voting
+Create a proposal
 
-### DAO Fund
+Vote Yes / Vote No
 
-* Contribute funds to the community treasury
-* View total DAO balance
+View voting results
 
-### Hackathon Leaderboard
+2. DAO Fund
+Contribute funds to the community treasury
 
-* Submit team scores
-* View team scores
-* Track hackathon performance
+View total DAO balance
 
-## Live Demo
+3. Hackathon Leaderboard
+Submit team scores
 
-* Network: Stellar Testnet
+View team scores & track hackathon performance
 
-* Contract ID: `YOUR_CONTRACT_ID`
+Live Demo
+Network: Stellar Testnet
 
-* Transaction: `YOUR_TRANSACTION_HASH`
+Contract ID: CDUGRR7PRCMEJ4UI3EE5NDQ6TOLJYVZCFVFERTD3A7DLDSF7ASC6NCTX
 
-## Example Usage
+Transaction (Submit Score): https://stellar.expert/explorer/testnet/tx/30c0a12360feaf8a557064c0b1047130ad743ea7546cc9011a08bd9508707353
 
-### Create Proposal
+Smart Contract Functions
+🟢 Voting
+create_proposal(title: String)
 
-Input:
-
-Buy ChatGPT Plus
-
-### Vote
-
-* vote_yes()
-* vote_no()
-
-Result:
-
-Title: Buy ChatGPT Plus
-
-Yes Votes: 2
-
-No Votes: 1
-
-### DAO Contribution
-
-Input:
-
-100
-
-Result:
-
-DAO Balance = 100
-
-### Submit Team Score
-
-Input:
-
-Team Alpha
-
-95
-
-Result:
-
-Team Alpha Score = 95
-
-## How to Run
-
-### Clone Repository
-
-```bash
-git clone https://github.com/yourname/community-dao.git
-```
-
-### Enter Project
-
-```bash
-cd community-dao
-```
-
-### Build Contract
-
-```bash
-stellar contract build
-```
-
-### Run Tests
-
-```bash
-cargo test
-```
-
-### Deploy to Testnet
-
-```bash
-stellar contract deploy \
---wasm target/wasm32-unknown-unknown/release/community_dao.wasm \
---source-account student \
---network testnet
-```
-
-## Smart Contract Functions
-
-### Voting
-
-```rust
-create_proposal(title)
 vote_yes()
+
 vote_no()
+
 get_proposal()
-```
 
-### DAO
+🟢 DAO
+contribute(amount: i128)
 
-```rust
-contribute(amount)
 get_dao_balance()
-```
 
-### Leaderboard
+🟢 Leaderboard
+submit_score(team_name: String, score: u32)
 
-```rust
-submit_score(team_name, score)
-get_score(team_name)
-```
+get_score(team_name: String)
 
-## Tech Stack
+How to Run
+1. Setup & Build
+Bash
+# Clone Repository
+git clone https://github.com/yourname/community-dao.git
 
-* Smart Contract: Rust
-* Framework: Soroban SDK v22
-* Blockchain: Stellar Testnet
-* Testing: Cargo Test
+# Enter Project
+cd community-dao
 
-## Team
+# Build Contract
+stellar contract build
 
-* Tran Khac Thuong
-* Information Technology Student
-* tt4060779@gmail.com
-* SaiGonTech
+# Run Tests
+cargo test
+2. Deploy to Testnet
+Bash
+stellar contract deploy --wasm target/wasm32-unknown-unknown/release/community_dao.wasm --source-account student --network testnet
+3. Interact via CLI (Single-line Commands)
+Do một số Terminal của môi trường Cloud IDE không hỗ trợ ký tự xuống dòng \, hãy sử dụng các lệnh viết liền một dòng dưới đây:
+
+Kích hoạt & Nạp tiền tài khoản admin trên Testnet:
+
+Bash
+stellar keys fund admin --network testnet
+Tạo Đề xuất mới:
+
+Bash
+stellar contract invoke --id CDUGRR7PRCMEJ4UI3EE5NDQ6TOLJYVZCFVFERTD3A7DLDSF7ASC6NCTX --source admin --network testnet --send=yes -- create_proposal --title "Mua Tai Khoan ChatGPT Plus"
+Gửi điểm số của Đội thi:
+
+Bash
+stellar contract invoke --id CDUGRR7PRCMEJ4UI3EE5NDQ6TOLJYVZCFVFERTD3A7DLDSF7ASC6NCTX --source admin --network testnet --send=yes -- submit_score --team_name "Team_Alpha" --score 95
+Truy vấn xem điểm số:
+
+Bash
+stellar contract invoke --id CDUGRR7PRCMEJ4UI3EE5NDQ6TOLJYVZCFVFERTD3A7DLDSF7ASC6NCTX --source admin --network testnet -- get_score --team_name "Team_Alpha"
+Tech Stack
+Smart Contract: Rust
+
+Framework: Soroban SDK v22
+
+Blockchain: Stellar Testnet
+
+Testing: Cargo Test
+
+Team
+Tran Khac Thuong
+
+Information Technology Student | University Student
+
+Vietnam
